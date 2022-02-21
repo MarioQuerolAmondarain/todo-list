@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TODO List</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>TODO List</h1>
+
+        <table>
+            <tr>
+                <th class = "tituloTabla">Creadas</th>
+                <th class = "tituloTabla">Haciendo</th>
+                <th class = "tituloTabla">Hechas</th>
+                <th class = "tituloTabla">Eliminadas</th>
+            </tr>
+            <tr>
+                <th><dl id="creadas"></dl></th>
+                <th><dl id="haciendo"></dl></th>
+                <th><dl id="hechas"></dl></th>
+                <th><dl id="eliminadas"></dl></th>
+            </tr>
+            <tr>
+                <th class="filaBotones"> <button onclick="ordenar()">Ordenar</button> </th>
+                <th class="filaBotones"> <button onclick="ordenar()">Ordenar</button> </th>
+                <th class="filaBotones"> <button onclick="ordenar()">Ordenar</button> </th>
+                <th class="filaBotones"> <button onclick="ordenar()">Ordenar</button> </th>
+            </tr>
+        </table>
+
+       <!-- Formulario -->
+        <h1>Añadir nueva tarea</h1>
+        <form action="/action_page.php">
+            <label for="name">Nombre: </label> <br>
+                <input type="text" id="name" name="name"><br>
+            <label for="description">Descripción: </label><br>
+                <input type="text" id="description" name="description"><br>
+            <label for="priority">Prioridad: </label>
+                <input type="number" id="priority" name="priority" min="1" max="9"><br>
+            <!--
+            -->
+        </form> 
+        <input type="submit" value="Guardar"> 
+
+        <script src="main.js" type="text/javascript"></script>
+    </body>
+</html>

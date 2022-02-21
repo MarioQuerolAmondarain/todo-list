@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Task 1",
+        "description": "Example task",
+        "priority": 0
+    },
+    {
+        "name": "Task 2",
+        "description": "Example task2",
+        "priority": 0
+    }
+]
