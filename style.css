@@ -1,17 +1,42 @@
 h1 {
     color: red;
 }
-.tituloTabla{
-    font-size: large;
-    color: green;
+.tableros {
+    display: flex;
 }
-th{
-  margin: 50px;
-  border: 4px solid;
-  padding: 10px;  
-  text-align: justify;
+.tablero > h2{
+    text-align: center;
 }
-.filaBotones{
-    border: none;
-    text-align: left;
+.tablero{
+    margin-left: 20px;
+    font-size: medium;
+    font-family: monospace;
+    background-color: blanchedalmond;
+    color: black;
+    border-radius: 10px;
+    padding: 1px;
+    padding-top: 0;
+    width: max-content;
+    height: max-content;
+    display: flex;
+    gap: 0px;
+    flex-direction: column;
+}
+.tarea{
+    margin: 10px;
+    margin-bottom: 5px;
+    margin-top: 0;
+    background-color: mediumseagreen;
+    border-radius: 10px;
+    padding-left: 15px;
+    width: max-content;
+    padding-right: 30px;
+}
+.tarea > h3{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+.botonOrdenar{
+    margin: 5px;
+    margin-top: 10px;
 }

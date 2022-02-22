@@ -7,29 +7,76 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>TODO List</h1>
+        <h1>TODO</h1>
+        <div class="tableros">
+            <div class="tablero" id="creadas">
+                <h2>Creadas</h2>
+                <div class="tarea">
+                    <h3>Tarea</h3>
+                    <ul>
+                        <li>Descripción: </li>
+                        <li>Prioridad: </li>
+                    </ul>
+                </div>
+                <div class="botonOrdenar"><button>Ordenar</button></div>
+            </div>
+            <div class="tablero" id="haciendo">
+                <h2>Haciendo</h2>
+                <div class="tarea">
+                    <h3>Tarea</h3>
+                    <ul>
+                        <li>Descripción: </li>
+                        <li>Prioridad: </li>
+                    </ul>
+                </div>
+                <div class="tarea">
+                    <h3>Tarea</h3>
+                    <ul>
+                        <li>Descripción: </li>
+                        <li>Prioridad: </li>
+                    </ul>
+                </div>
+                <div class="botonOrdenar"><button>Ordenar</button></div>
+            </div>
+            <div class="tablero" id="hechas">
+                <h2>Hechas</h2>
+                <div class="tarea">
+                    <h3>Tarea</h3>
+                    <ul>
+                        <li>Descripción: </li>
+                        <li>Prioridad: </li>
+                    </ul>
+                </div>
+                <div class="tarea">
+                    <h3>Tarea</h3>
+                    <ul>
+                        <li>Descripción: </li>
+                        <li>Prioridad: </li>
+                    </ul>
+                </div>
+                <div class="tarea">
+                    <h3>Tarea</h3>
+                    <ul>
+                        <li>Descripción: </li>
+                        <li>Prioridad: </li>
+                    </ul>
+                </div>
+                <div class="botonOrdenar"><button>Ordenar</button></div>
+            </div>
+            <div class="tablero" id="eliminadas">
+                <h2>Eliminadas</h2>
+                <div class="tarea">
+                    <h3>Tarea</h3>
+                    <ul>
+                        <li>Descripción: </li>
+                        <li>Prioridad: </li>
+                    </ul>
+                </div>
+                <div class="botonOrdenar"><button>Ordenar</button></div>
+            </div>
+        </div>
 
-        <table>
-            <tr>
-                <th class = "tituloTabla">Creadas</th>
-                <th class = "tituloTabla">Haciendo</th>
-                <th class = "tituloTabla">Hechas</th>
-                <th class = "tituloTabla">Eliminadas</th>
-            </tr>
-            <tr>
-                <th><dl id="creadas"></dl></th>
-                <th><dl id="haciendo"></dl></th>
-                <th><dl id="hechas"></dl></th>
-                <th><dl id="eliminadas"></dl></th>
-            </tr>
-            <tr>
-                <th class="filaBotones"> <button onclick="ordenar()">Ordenar</button> </th>
-                <th class="filaBotones"> <button onclick="ordenar()">Ordenar</button> </th>
-                <th class="filaBotones"> <button onclick="ordenar()">Ordenar</button> </th>
-                <th class="filaBotones"> <button onclick="ordenar()">Ordenar</button> </th>
-            </tr>
-        </table>
-
+        <hr>
        <!-- Formulario -->
         <h1>Añadir nueva tarea</h1>
         <form action="/action_page.php">

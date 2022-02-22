@@ -42,14 +42,15 @@ const tareas = [
         "state" : "deleted"
     }
 ];
+/*
 
 //ordenar()
 var creadas = document.getElementById("creadas");
 var haciendo = document.getElementById("haciendo");
 var hechas = document.getElementById("hechas");
 var eliminadas = document.getElementById("eliminadas");
-
 var elemento
+
 tareas.forEach(tarea => {
     elemento = "<dt>" + tarea["name"] +
             "<b>Descripción: </b>" + tarea["description"] + "</dd>" 
@@ -75,6 +76,7 @@ tareas.forEach(tarea => {
             break;
     }
 });
+*/
 
 function ordenar()
 {
