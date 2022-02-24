@@ -1,3 +1,13 @@
+/*
+    FORMATO ITEM TODO
+    <div>
+        <h3>Tarea</h3>
+        <ul>
+            <li>Descripción: </li>
+            <li>Prioridad: </li>
+        </ul>
+    </div>
+*/
 const tareas = [
     {
         "name": "Task 1",
@@ -42,49 +52,23 @@ const tareas = [
         "state" : "deleted"
     }
 ];
-/*
 
-//ordenar()
-var creadas = document.getElementById("creadas");
-var haciendo = document.getElementById("haciendo");
-var hechas = document.getElementById("hechas");
-var eliminadas = document.getElementById("eliminadas");
-var elemento
+var contendorCreadas = document.getElementById("contenedorTareasCreadas");
+var contenedorHaciendo = document.getElementById("contenedorTareasHaciendo");
+var contenedorHechas = document.getElementById("contenedorTareasHechas");
+var contenedorEliminadas = document.getElementById("contenedorTareasEliminadas");
 
-tareas.forEach(tarea => {
-    elemento = "<dt>" + tarea["name"] +
-            "<b>Descripción: </b>" + tarea["description"] + "</dd>" 
-            "<b>Prioridad: </b>" + tarea["priority"] 
-    + "</dt>"
+// Array que contendran las tareas separadas por estados
+actualizarTablas();
 
-    switch(tarea["state"])
-    {
-        case "created":
-            creadas.innerHTML +=  elemento; 
-            break;
-        case "doing":
-            haciendo.innerHTML +=  elemento;
-            break;
-        case "done":
-            hechas.innerHTML +=  elemento;
-            break;
-        case "deleted":
-            eliminadas.innerHTML +=  elemento;
-            break;
-        default:
-            creadas.innerHTML +=  elemento;
-            break;
-    }
-});
-*/
 
-function ordenar()
+function ordenarCreadas()
 {
     for (let i = 0; i < tareas.length ; i++)
     {
         for (let j = 0; j < i ; j++) 
         {
-            if(tareas[j]["priority"] > tareas[j+1]["priority"])
+            if(tareas[j]["priority"] > contendorCreadas[j+1]["priority"])
             {
                 aux = tareas[j];
                 tareas[j] = tareas[j+1];
@@ -92,27 +76,55 @@ function ordenar()
             }
         }   
     }
+    actualizarTablas();
 }
 
-function actulizarColumna(columna)
+function ordenar(contedor)
 {
-    ordenar();
-    switch(columna)
+    for (let i = 0; i < contedor.length ; i++)
     {
-        case "created":
-            creadas.innerHTML = "uwu"; 
-            break;
-        case "doing":
-            haciendo.innerHTML = "uwu"; 
-            break;
-        case "done":
-            hechas.innerHTML = "uwu"; 
-            break;
-        case "deleted":
-            eliminadas.innerHTML = "uwu"; 
-            break;
-        default:
-            creadas.innerHTML = "uwu"; 
-            break;
+        for (let j = 0; j < i ; j++) 
+        {
+            if(contedor[j]["priority"] > contedor[j+1]["priority"])
+            {
+                aux = contedor[j];
+                contedor[j] = contedor[j+1];
+                contedor[j+1] = aux;
+            }
+        }   
     }
+    actualizarTablas();
+}
+
+function actualizarTablas()
+{
+    contendorCreadas.innerHTML = "";
+    contenedorHaciendo.innerHTML = "";
+    contenedorHechas.innerHTML = "";
+    contenedorEliminadas.innerHTML = "";
+    
+    tareas.forEach(tarea => 
+    {
+        elemento = "<div class=\"tarea\">" + 
+        "<h3>" + tarea["name"] + "</h3>" + "<ul>" +
+            "<li>Descripción: " + tarea["description"] + "</li>" +
+            "<li>Prioridad: " + tarea["priority"] + "</li>" +
+        "</ul></div>";
+
+        switch(tarea["state"])
+        {
+            case "created":
+                contendorCreadas.innerHTML += elemento;
+                break;
+            case "doing":
+                contenedorHaciendo.innerHTML += elemento;
+                break;
+            case "done":
+                contenedorHechas.innerHTML += elemento;
+                break;
+            case "deleted":
+                contenedorEliminadas.innerHTML += elemento;
+                break;
+        }
+    });
 }

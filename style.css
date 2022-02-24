@@ -27,6 +27,7 @@ h1 {
     margin-bottom: 5px;
     margin-top: 0;
     background-color: mediumseagreen;
+    padding: 5px;
     border-radius: 10px;
     padding-left: 15px;
     width: max-content;
@@ -38,5 +39,10 @@ h1 {
 }
 .botonOrdenar{
     margin: 5px;
-    margin-top: 10px;
+    margin-top: 10px;;
+}
+.botonOrdenar > button{
+    background-color: dimgrey;
+    color: white;
+    border-radius: 5px;
 }
