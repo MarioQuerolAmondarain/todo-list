@@ -53,31 +53,30 @@ const tareas = [
     }
 ];
 
+
 var contendorCreadas = document.getElementById("contenedorTareasCreadas");
 var contenedorHaciendo = document.getElementById("contenedorTareasHaciendo");
 var contenedorHechas = document.getElementById("contenedorTareasHechas");
 var contenedorEliminadas = document.getElementById("contenedorTareasEliminadas");
 
-// Array que contendran las tareas separadas por estados
 actualizarTablas();
-
-
 function ordenarCreadas()
 {
     for (let i = 0; i < tareas.length ; i++)
     {
         for (let j = 0; j < i ; j++) 
         {
-            if(tareas[j]["priority"] > contendorCreadas[j+1]["priority"])
+            if(tareas[j]["priority"] > tareas[j+1]["priority"])
             {
                 aux = tareas[j];
                 tareas[j] = tareas[j+1];
                 tareas[j+1] = aux;
             }
-        }   
+        }
     }
     actualizarTablas();
 }
+
 
 function ordenar(contedor)
 {
