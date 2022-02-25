@@ -1,48 +1,38 @@
-h1 {
-    color: red;
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+*{
+    font-family: 'Varela Round', sans-serif;
 }
-.tableros {
-    display: flex;
+body{
+    background-color: #35363A;
 }
-.tablero > h2{
-    text-align: center;
-}
-.tablero{
-    margin-left: 20px;
-    font-size: medium;
-    font-family: monospace;
-    background-color: blanchedalmond;
-    color: black;
-    border-radius: 10px;
-    padding: 1px;
-    padding-top: 0;
-    width: max-content;
-    height: max-content;
-    display: flex;
-    gap: 0px;
-    flex-direction: column;
-}
-.tarea{
-    margin: 10px;
-    margin-bottom: 5px;
-    margin-top: 0;
-    background-color: mediumseagreen;
-    padding: 5px;
-    border-radius: 10px;
-    padding-left: 15px;
-    width: max-content;
-    padding-right: 30px;
-}
-.tarea > h3{
-    margin-top: 10px;
-    margin-bottom: 0px;
-}
-.botonOrdenar{
+
+/* CONTENEDOR AÑADIR TAREA */
+.añadirTareaForm{
+    background-color: antiquewhite;
+    padding: 20px;
     margin: 5px;
-    margin-top: 10px;;
+    border-radius: 20px;
+    display: flex;        
+    justify-content: center;
 }
-.botonOrdenar > button{
-    background-color: dimgrey;
+#descripcionTarea{
+    resize: none;
+}
+#btnAñadirTarea{
+    border-radius: 7px;
+    margin-top: 15px;
+}
+h2{
+    margin-left: 15px;
+    margin-bottom: 2px;
     color: white;
+}
+
+/* CONTENEDOR LISTA DE TAREAS */
+hr{
+    display: none;
+    background-color: #23948C;
+    height: 10px;
+    border: 0px;
     border-radius: 5px;
 }
