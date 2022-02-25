@@ -26,13 +26,53 @@ h2{
     margin-left: 15px;
     margin-bottom: 2px;
     color: white;
+    font-size: 30px;
 }
 
 /* CONTENEDOR LISTA DE TAREAS */
-hr{
-    display: none;
-    background-color: #23948C;
-    height: 10px;
-    border: 0px;
+.listas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+h3{
+    color: aliceblue;
+    text-align: center;
+    margin-bottom: 2px;
+}
+.lista{
+    height: 100px;
+    width: 280px;
+}
+.tarea{
+    background-color: green;
     border-radius: 5px;
+    display: none;
+}
+.contenedorTareas{
+    background-color: cadetblue;
+    padding: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: max-content;
+    border-radius: 10px;
+}
+.imagenes{
+    display: flex;
+    flex-direction: column;
+    float: right;
+}
+img{
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+.imagenes > button{
+    border-radius: 0px 20px 20px 0px;
+    width: max-content;
+    height: max-content;
+    margin-top: 5px;
 }

@@ -7,7 +7,7 @@
             <li>Prioridad: </li>
         </ul>
     </div>
-*/
+
 const tareas = [
     {
         "name": "Task 1",
@@ -127,3 +127,4 @@ function actualizarTablas()
         }
     });
 }
+*/
