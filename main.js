@@ -23,6 +23,7 @@ tareas.forEach(tarea => {
     actualizarTareas(tarea);
 });
 listaGeneral.removeChild(listaGeneral.firstChild);
+console.log("Se añaden las tareas a las respectivas listas");
 
 /* 
     EVENTOS BOTONES
@@ -40,27 +41,75 @@ document.getElementById("btnAñadirTarea").addEventListener('click', (e) => {
     console.log("Se añade nueva tarea, con id: " + id);
 });;
 
-document.getElementById("vaciarToDo").addEventListener('click', (e) => {
-    vaciarLista("todo");
+document.getElementById("ocultarGeneral").addEventListener('click', (e) => {
+    ocultar("general");
 });
-document.getElementById("vaciarDoing").addEventListener('click', (e) => {
-    vaciarLista("doing");
-});
-document.getElementById("vaciarDone").addEventListener('click', (e) => {
-    vaciarLista("done");
+document.getElementById("mostrarCreadas").style.display = "none";
+document.getElementById("mostrarCreadas").addEventListener('click', (e) => {
+    mostrar("general");
 });
 
-document.getElementById("ordenarAscendenteToDo").addEventListener('click', (e) => {
-    ordenarLista("todo", true);
+document.getElementById("ocultarDeleted").addEventListener('click', (e) => {
+    ocultar("deleted");
+});
+document.getElementById("mostrarEliminadas").style.display = "none";
+document.getElementById("mostrarEliminadas").addEventListener('click', (e) => {
+    mostrar("deleted");
 });
 
+const nombreBotones = ["ToDo", "Doing", "Done"];
+nombreBotones.forEach(nombre => {
+    document.getElementById("vaciar" + nombre).addEventListener('click', (e) => {
+        vaciarLista(nombre.toLowerCase());
+    });    
+
+    document.getElementById("ordenarAscendente" + nombre).addEventListener('click', (e) => {
+        ordenarLista(nombre.toLowerCase(), true);
+    });
+
+    document.getElementById("ordenarDescendente" + nombre).addEventListener('click', (e) => {
+        ordenarLista(nombre.toLowerCase(), false);
+    });
+});
 
 /* 
     FUNCIONES
 */
-ordenarLista(lista, ascendente)
+function ordenarLista(lista, ascendente)
 {
-    
+    if(ascendente)
+        console.log(lista + " dice: Ascendente uwu");
+    else
+        console.log(lista + " dice: Descendente uwu");
+}
+function ocultar(lista)
+{
+    if(lista == "general")
+    {
+        document.getElementById("listaGeneralContenedor").style.display = "none";
+        document.getElementById("mostrarCreadas").style.display = "";
+        console.log(lista + " dice: Ocultar uwu");
+    }
+    else
+    {
+        document.getElementById("listaDeletedContenedor").style.display = "none";
+        document.getElementById("mostrarEliminadas").style.display = "";
+    }
+    console.log("Se oculta " + lista);
+}
+function mostrar(lista)
+{
+    if(lista == "general")
+    {
+        document.getElementById("listaGeneralContenedor").style.display = "";
+        document.getElementById("mostrarCreadas").style.display = "none";
+    }
+    else
+    {
+        document.getElementById("listaDeletedContenedor").style.display = "";
+        document.getElementById("mostrarEliminadas").style.display = "none";
+    }
+    console.log("Se muestra " + lista);
 }
 
 function actualizarTareas(tarea)
@@ -92,6 +141,10 @@ function actualizarTareas(tarea)
 
 function vaciarLista(lista)
 {
+    /* 
+        Modificar la forma en la que se vacia la lista, clonar el nodo en las lista de deleted
+        y luego borrar el nodo el la lista general
+    */
     var confirmacion = confirm("Desea eliminar la lista " + lista);
     if(!confirmacion){
         return;
@@ -105,6 +158,7 @@ function vaciarLista(lista)
             tareas[indice].state = "deleted";
             let tareaActualizada = tareas[indice];
             console.log("Actualizada " + tareas[indice].name + " Estado: " + tareas[indice].state);
+//            actualizarTareas(tareaActualizada);
         }
     }
     actualizarListas();

@@ -27,9 +27,9 @@
             </form> 
         </div>
 
-        <h2>Listas</h2>
+        <h2>Listas  <button id="mostrarCreadas"><img src="iconos/creadas.png" alt="Mostrar Creadas"></button> <button id="mostrarEliminadas"><img src="iconos/deleted.png" alt="Mostrar Eliminadas"></button></h2>
         <div class="listas">
-            <div class="lista">
+            <div class="lista" id="listaGeneralContenedor">
                 <h3>Creadas</h3>
                 <div class="prueba">
                     <div class="contenedorTareas">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="imagenes">
-                        <button><img src="iconos/oculto.png" alt="ocultar"></button>
+                        <button><img src="iconos/oculto.png" alt="ocultar" id="ocultarGeneral"></button>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="imagenes">
                         <button><img src="iconos/flecha-arriba.png" alt="Prioridad ascendente" id="ordenarAscendenteToDo"></button>
-                        <button><img src="iconos/flecha-abajo.png" alt="Prioridad descendente"></button>
+                        <button><img src="iconos/flecha-abajo.png" alt="Prioridad descendente" id="ordenarDescendenteToDo"></button>
                         <button><img src="iconos/eliminar.png" alt="Vaciar lista" id="vaciarToDo"></button>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
                         </div>
                     </div>
                     <div class="imagenes">
-                        <button><img src="iconos/flecha-arriba.png" alt="Prioridad ascendente"></button>
-                        <button><img src="iconos/flecha-abajo.png" alt="Prioridad descendente"></button>
+                        <button><img src="iconos/flecha-arriba.png" alt="Prioridad ascendente" id="ordenarAscendenteDoing"></button>
+                        <button><img src="iconos/flecha-abajo.png" alt="Prioridad descendente" id="ordenarDescendenteDoing"></button>
                         <button><img src="iconos/eliminar.png" alt="Vaciar lista" id="vaciarDoing"></button>
                     </div>
                 </div>
@@ -94,13 +94,13 @@
                     </div>
                     <div class="imagenes">
                         <!-- <button><img src="iconos/anadir.png" alt="añadir"></button> -->
-                        <button><img src="iconos/flecha-arriba.png" alt="Prioridad ascendente"></button>
-                        <button><img src="iconos/flecha-abajo.png" alt="Prioridad descendente"></button>
+                        <button><img src="iconos/flecha-arriba.png" alt="Prioridad ascendente" id="ordenarAscendenteDone"></button>
+                        <button><img src="iconos/flecha-abajo.png" alt="Prioridad descendente" id="ordenarDescendenteDone"></button>
                         <button><img src="iconos/eliminar.png" alt="Vaciar lista"  id="vaciarDone"></button>
                     </div>
                 </div>
             </div>
-            <div class="lista">
+            <div class="lista" id="listaDeletedContenedor">
                 <h3>Deleted</h3>
                 <div class="prueba">
                     <div class="contenedorTareas">
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <div class="imagenes">
-                        <button><img src="iconos/oculto.png" alt="añadir"></button>
+                        <button><img src="iconos/oculto.png" alt="añadir" id="ocultarDeleted"></button>
                     </div>
                 </div>
             </div>
