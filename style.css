@@ -42,15 +42,19 @@ h3{
     color: aliceblue;
     text-align: center;
     margin-bottom: 2px;
+    margin-right: 30px;
 }
 .lista{
-    height: 100px;
+    height: fit-content;
     width: 280px;
 }
 .tarea{
-    background-color: green;
+    background-color: gray;
     border-radius: 5px;
-    display: none;
+}
+.tarea ul{
+    list-style: none;
+    padding: 10px;
 }
 .contenedorTareas{
     background-color: cadetblue;
@@ -59,15 +63,16 @@ h3{
     padding-right: 5px;
     height: max-content;
     border-radius: 10px;
+    width: 90%;
+    height: 175px;
 }
 .imagenes{
     display: flex;
     flex-direction: column;
-    float: right;
 }
 img{
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     padding: 5px;
 }
 .imagenes > button{
@@ -75,4 +80,17 @@ img{
     width: max-content;
     height: max-content;
     margin-top: 5px;
+}
+.prueba{
+    display: flex;
+    justify-content: right;
+}
+.tituloTarea{
+    font-size: 20px;
+    font-weight: bold;
+}
+.textoTarea{
+    font-size: 15px;
+    margin: 2px;
+    margin-left: 10px;
 }
