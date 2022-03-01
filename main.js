@@ -143,31 +143,34 @@ function actualizarTareas(tarea)
     tareasNodos.push(tareaItem);
 }
 
-function prueba()
+function eliminarTarea(tareaId)
 {
-    let hijoEliminar = 0;
+    /* 
+        1º Guardar en un array los id's de las tareas que tenemos que eliminar
+        2º Recorrer la lista y borrar los elementos (alomejor se borran los dos elementos, el viejo y el acutalizado)
+    */
+
     let hijos = listaGeneral.getElementsByClassName("itemTarea");
     
+    let eliminada = false;
     for(let i = 0; i < hijos.length; i++)
     {
-        console.log(hijos[i].getAttribute("id"));
+        if(hijos[i].getAttribute("id") == tareaId)
+        {
+            listaGeneral.removeChild(hijos[i]);
+            eliminada = true;
+        }
     }
-    listaGeneral.removeChild(hijos[4]);
 
-    //console.log(hijos[0].attributes.id);
+    if(eliminada){
+        console.log("Tarea con id " + tareaId + " ha sido eliminada");
+    }else {
+        console.log("No existe la tarea con id " + tareaId);
+    }
 }
 
 function vaciarLista(lista)
 {
-    /* 
-        Modificar la forma en la que se vacia la lista, clonar el nodo en las lista de deleted
-        y luego borrar el nodo el la lista general
-
-        Asignar a cada nodo un id para luego coger el nodo padre y poder borrar el nodo con el id 
-        que queramos https://www.w3schools.com/jsref/met_node_removechild.asp
-            const element = document.getElementById("myLI");
-            element.parentNode.removeChild(element);
-    */
     var confirmacion = confirm("Desea eliminar la lista " + lista);
     if(!confirmacion){
         return;
@@ -180,45 +183,24 @@ function vaciarLista(lista)
         {
             tareas[indice].state = "deleted";
             let tareaActualizada = tareas[indice];
+            eliminarTarea(tarea.id);
             actualizarTareas(tareaActualizada);
-            
-            //listaGeneral.removeChild(tareas[indice]);
 
             console.log("Actualizada " + tareas[indice].name + " Estado: " + tareas[indice].state);
         }
     }
-    actualizarListas();
+
+    if(lista == "todo"){
+        listaToDo.innerHTML = "";
+    } else if( lista == "doing") {
+        listaDoing.innerHTML = "";
+    } else if(lista == "done") {  
+        listaDone.innerHTML = "";  
+    } else if(lista == "deleted") {
+        listaDeleted.innerHTML = "";
+    } else {
+        console.log("Lista no válida");
+    }
+
     console.log("Lista " + lista + " vaciada");
-}
-
-function actualizarListas()
-{
-    while(listaGeneral.firstChild) 
-    {
-        listaGeneral.removeChild(listaGeneral.firstChild);
-    }
-
-    while(listaToDo.firstChild) 
-    {
-        listaToDo.removeChild(listaToDo.firstChild);
-    }
-    
-    while(listaDoing.firstChild) 
-    {
-        listaDoing.removeChild(listaDoing.firstChild);
-    }
-    
-    while(listaDone.firstChild) 
-    {
-        listaDone.removeChild(listaDone.firstChild);
-    }
-    
-    while(listaDeleted.firstChild) 
-    {
-        listaDeleted.removeChild(listaDeleted.firstChild);
-    }
-
-    tareas.forEach(tarea => {
-        actualizarTareas(tarea);
-    });
 }
