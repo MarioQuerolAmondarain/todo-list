@@ -17,6 +17,7 @@ const listaToDo = document.getElementById("listaToDo");
 const listaDoing = document.getElementById("listaDoing");
 const listaDone = document.getElementById("listaDone");
 const listaDeleted = document.getElementById("listaDeleted");
+const tareasNodos = [];
 
 listaGeneral.removeChild(listaGeneral.firstChild);
 tareas.forEach(tarea => {
@@ -136,7 +137,8 @@ function actualizarTareas(tarea)
         listaDeleted.appendChild(tareaItem.cloneNode(true));
     }
 
-    listaGeneral.appendChild(tareaItem.cloneNode(true)); 
+    listaGeneral.appendChild(tareaItem.cloneNode(true));
+    tareasNodos.push(tareaItem);
 }
 
 function vaciarLista(lista)
@@ -144,6 +146,11 @@ function vaciarLista(lista)
     /* 
         Modificar la forma en la que se vacia la lista, clonar el nodo en las lista de deleted
         y luego borrar el nodo el la lista general
+
+        Asignar a cada nodo un id para luego coger el nodo padre y poder borrar el nodo con el id 
+        que queramos https://www.w3schools.com/jsref/met_node_removechild.asp
+            const element = document.getElementById("myLI");
+            element.parentNode.removeChild(element);
     */
     var confirmacion = confirm("Desea eliminar la lista " + lista);
     if(!confirmacion){
@@ -157,8 +164,9 @@ function vaciarLista(lista)
         {
             tareas[indice].state = "deleted";
             let tareaActualizada = tareas[indice];
+            actualizarTareas(tareaActualizada);
+            //listaGeneral.removeChild(tareas[indice]);
             console.log("Actualizada " + tareas[indice].name + " Estado: " + tareas[indice].state);
-//            actualizarTareas(tareaActualizada);
         }
     }
     actualizarListas();
