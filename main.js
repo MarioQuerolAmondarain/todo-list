@@ -2,10 +2,11 @@ const tareas = [];
 const estados = ["todo", "doing", "done", "deleted"];
 
 let indice = 0;
+var id;
 for (let index = 0; index < 8; index++) 
 {
     id = index;
-    tareas.push(new Task("Tarea " + index, "Descripcion", estados[indice], Math.round(Math.random() * 10)));
+    tareas.push(new Task("Tarea " + index, "Descripcion", estados[indice], Math.round(Math.random() * 10), id));
     indice++;
     if(indice >= 4) indice = 0;
 }
@@ -79,9 +80,9 @@ nombreBotones.forEach(nombre => {
 function ordenarLista(lista, ascendente)
 {
     if(ascendente)
-        console.log(lista + " dice: Ascendente uwu");
+        console.log("ToDo");
     else
-        console.log(lista + " dice: Descendente uwu");
+        console.log("ToDo");
 }
 function ocultar(lista)
 {
@@ -116,7 +117,7 @@ function mostrar(lista)
 function actualizarTareas(tarea)
 {
     let tareaItem = tareaTemplate.cloneNode(true);
-    tareaItem.setAttribute('id', "");
+    tareaItem.setAttribute('id', tarea.id);
 
     let tituloTarea = tareaItem.getElementsByClassName("tituloTarea");
     tituloTarea[0].innerHTML = tarea.name + " [" + tarea.priority + "]";
@@ -138,7 +139,22 @@ function actualizarTareas(tarea)
     }
 
     listaGeneral.appendChild(tareaItem.cloneNode(true));
+    indice++;
     tareasNodos.push(tareaItem);
+}
+
+function prueba()
+{
+    let hijoEliminar = 0;
+    let hijos = listaGeneral.getElementsByClassName("itemTarea");
+    
+    for(let i = 0; i < hijos.length; i++)
+    {
+        console.log(hijos[i].getAttribute("id"));
+    }
+    listaGeneral.removeChild(hijos[4]);
+
+    //console.log(hijos[0].attributes.id);
 }
 
 function vaciarLista(lista)
@@ -165,7 +181,9 @@ function vaciarLista(lista)
             tareas[indice].state = "deleted";
             let tareaActualizada = tareas[indice];
             actualizarTareas(tareaActualizada);
+            
             //listaGeneral.removeChild(tareas[indice]);
+
             console.log("Actualizada " + tareas[indice].name + " Estado: " + tareas[indice].state);
         }
     }
