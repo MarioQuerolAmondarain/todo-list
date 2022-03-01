@@ -79,25 +79,71 @@ nombreBotones.forEach(nombre => {
 */
 function ordenarLista(lista, ascendente)
 {
+    /* 
+        1º Crear una lista con la lista desordenada 
+        2º Vaciar la lista en cuestión
+        3º Ordenar la lista
+        4º Volver a añadir las tareas a la lista
+    */
+
+    if(lista !== "todo"){
+        console.log("Estos no son los androides que buscais");
+        return;
+    }
+
+    let listaDesordenada = listaToDo;
+    let prioridad = obtenerPrioridad(listaDesordenada, 0);
+    console.log(prioridad);
+
+    
+    /* 
+    let eliminada = false;
+    for(let i = 0; i < hijos.length; i++)
+    {
+        if(hijos[i].getAttribute("id") == tareaId)
+        {
+            listaGeneral.removeChild(hijos[i]);
+            eliminada = true;
+        }
+    }
+
     if(ascendente)
         console.log("ToDo");
     else
-        console.log("ToDo");
+        console.log("ToDo"); */
 }
+
+function obtenerPrioridad(lista, nElemento)
+{
+    let hijos = lista.getElementsByClassName("itemTarea");
+    
+    let titulo = lista.getElementsByClassName("itemTarea")[nElemento].getElementsByClassName("tituloTarea")[0].innerHTML;
+
+    let indice;
+    for (let i = titulo.length-1; i > 0; i--) {
+        if(titulo[i] == "[")
+        {
+            indice = i;
+            break;
+        }
+    }
+    return titulo.substring(indice+1, titulo.length-1);
+}
+
 function ocultar(lista)
 {
     if(lista == "general")
     {
         document.getElementById("listaGeneralContenedor").style.display = "none";
         document.getElementById("mostrarCreadas").style.display = "";
-        console.log(lista + " dice: Ocultar uwu");
     }
     else
     {
         document.getElementById("listaDeletedContenedor").style.display = "none";
         document.getElementById("mostrarEliminadas").style.display = "";
+
     }
-    console.log("Se oculta " + lista);
+    console.log("Se oculta " + lista + " se muestra botón para desocultar");
 }
 function mostrar(lista)
 {
@@ -111,7 +157,7 @@ function mostrar(lista)
         document.getElementById("listaDeletedContenedor").style.display = "";
         document.getElementById("mostrarEliminadas").style.display = "none";
     }
-    console.log("Se muestra " + lista);
+    console.log("Se muestra " + lista + " se oculta botón para desocultar");
 }
 
 function actualizarTareas(tarea)
@@ -145,11 +191,6 @@ function actualizarTareas(tarea)
 
 function eliminarTarea(tareaId)
 {
-    /* 
-        1º Guardar en un array los id's de las tareas que tenemos que eliminar
-        2º Recorrer la lista y borrar los elementos (alomejor se borran los dos elementos, el viejo y el acutalizado)
-    */
-
     let hijos = listaGeneral.getElementsByClassName("itemTarea");
     
     let eliminada = false;
