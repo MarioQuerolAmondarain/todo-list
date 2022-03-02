@@ -135,6 +135,8 @@ function eliminarTarea(tareaId)
         }
     }
 
+
+
     if(eliminada){
         console.log("Tarea con id " + tareaId + " ha sido eliminada");
     }else {
@@ -148,53 +150,46 @@ function eliminarTarea(tareaId)
 function ordenarLista(lista, ascendente)
 {
     /* 
-        1º Crear una lista con la lista desordenada 
-        2º Vaciar la lista en cuestión
-        3º Ordenar la lista
-        4º Volver a añadir las tareas a la lista
+        1º Crear un nodo padre vacio que sea una copia de la lista que queremos ordenar 
+        2º Recorrer la lista original e ir añadiendo os nodos hijos ordenados a la nueva lista
+        3º Machacar la lista original con la actualizada
 
         Mirar método ordenación:
         https://stackoverflow.com/questions/7742305/changing-the-order-of-elements
     */
 
-    if(lista !== "todo"){
-        console.log("Estos no son los androides que buscais");
-        return;
+    let hijos;
+    let padre;
+    if(lista == "todo"){
+        padre = listaToDo;
+        hijos = listaToDo.getElementsByClassName("itemTarea");
+    } else if( lista == "doing") {
+        padre = listaDoing;
+        hijos = listaDoing.getElementsByClassName("itemTarea");
+    } else if(lista == "done") {
+        padre = listaDone;  
+        hijos = listaDone.getElementsByClassName("itemTarea");
     }
-
-    let listaDesordenada = listaToDo.getElementsByClassName("itemTarea");;
-    let prioridad = obtenerPrioridad(listaDesordenada, 0);
-    console.log(prioridad);
-    /* 
-        Probar si se puede cambiar la posición de los hijos para poder ordenarlos con lo del método burbuja
-    */
-    let hijoAux = listaDesordenada[0];
-    listaDesordenada[0] = listaDesordenada[1];
-    listaDesordenada[1] = hijoAux;
-    console.log(listaDesordenada);
-
-/*     for(let i = 0; i < listaDesordenada.length; i++)
-    {
-        for(let j = 0; j < listaDesordenada.length - i; j++)
-        {
-        }
-    }
- */    
-    /* 
-    let eliminada = false;
+    
     for(let i = 0; i < hijos.length; i++)
     {
-        if(hijos[i].getAttribute("id") == tareaId)
+        for(let j = 0; j < hijos.length - i - 1; j++)
         {
-            listaGeneral.removeChild(hijos[i]);
-            eliminada = true;
+            let hijo1 = obtenerPrioridad(hijos, j);
+            let hijo2 = obtenerPrioridad(hijos, j + 1);
+
+            if(hijo1 > hijo2 && ascendente)
+            {
+                padre.insertBefore(hijos[j + 1], hijos[j]);
+            }
+            
+            if(hijo1 < hijo2 && !ascendente)
+            {
+                padre.insertBefore(hijos[j + 1], hijos[j]);
+            }
         }
     }
-
-    if(ascendente)
-        console.log("ToDo");
-    else
-        console.log("ToDo"); */
+    console.log(lista + " ordenada de forma " + (ascendente ? "ascendete" : "descendete"));
 }
 function obtenerPrioridad(hijos, nElemento)
 {
