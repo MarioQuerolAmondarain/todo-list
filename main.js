@@ -84,6 +84,9 @@ function ordenarLista(lista, ascendente)
         2º Vaciar la lista en cuestión
         3º Ordenar la lista
         4º Volver a añadir las tareas a la lista
+
+        Mirar método ordenación:
+        https://stackoverflow.com/questions/7742305/changing-the-order-of-elements
     */
 
     if(lista !== "todo"){
@@ -91,11 +94,24 @@ function ordenarLista(lista, ascendente)
         return;
     }
 
-    let listaDesordenada = listaToDo;
+    let listaDesordenada = listaToDo.getElementsByClassName("itemTarea");;
     let prioridad = obtenerPrioridad(listaDesordenada, 0);
     console.log(prioridad);
+    /* 
+        Probar si se puede cambiar la posición de los hijos para poder ordenarlos con lo del método burbuja
+    */
+    let hijoAux = listaDesordenada[0];
+    listaDesordenada[0] = listaDesordenada[1];
+    listaDesordenada[1] = hijoAux;
+    console.log(listaDesordenada);
 
-    
+/*     for(let i = 0; i < listaDesordenada.length; i++)
+    {
+        for(let j = 0; j < listaDesordenada.length - i; j++)
+        {
+        }
+    }
+ */    
     /* 
     let eliminada = false;
     for(let i = 0; i < hijos.length; i++)
@@ -113,11 +129,11 @@ function ordenarLista(lista, ascendente)
         console.log("ToDo"); */
 }
 
-function obtenerPrioridad(lista, nElemento)
+function obtenerPrioridad(hijos, nElemento)
 {
-    let hijos = lista.getElementsByClassName("itemTarea");
+    /* let hijos = lista.getElementsByClassName("itemTarea"); */
     
-    let titulo = lista.getElementsByClassName("itemTarea")[nElemento].getElementsByClassName("tituloTarea")[0].innerHTML;
+    let titulo = hijos[nElemento].getElementsByClassName("tituloTarea")[0].innerHTML;
 
     let indice;
     for (let i = titulo.length-1; i > 0; i--) {
@@ -173,14 +189,18 @@ function actualizarTareas(tarea)
 
     let estadoTarea = tareaItem.getElementsByClassName("estadoTarea");
     estadoTarea[0].innerHTML = tarea.state;
-
+    
     if(tarea.state === "todo"){
+        estadoTarea[0].style.color = "yellow";
         listaToDo.appendChild(tareaItem.cloneNode(true));
     } else if(tarea.state === "doing") {
+        estadoTarea[0].style.color = "blue";
         listaDoing.appendChild(tareaItem.cloneNode(true));
     } else if(tarea.state === "done") {    
+        estadoTarea[0].style.color = "green";
         listaDone.appendChild(tareaItem.cloneNode(true));
     } else {// if(tarea.state == "deleted")
+        estadoTarea[0].style.color = "red";
         listaDeleted.appendChild(tareaItem.cloneNode(true));
     }
 
