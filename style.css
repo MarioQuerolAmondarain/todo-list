@@ -4,11 +4,15 @@
 }
 body{
     background-color: #464646;
+    background-image: url("iconos/fondo2.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 /* CONTENEDOR AÑADIR TAREA */
 .añadirTareaForm{
-    background-color: antiquewhite;
+    background-color: rgba(250, 235, 215, 0.9);
     padding: 20px;
     margin: 5px;
     border-radius: 20px;
@@ -26,6 +30,7 @@ h2{
     margin-left: 15px;
     margin-bottom: 2px;
     color: white;
+    text-shadow: 3px 3px black;
     font-size: 30px;
 }
 
@@ -67,7 +72,7 @@ img{
     height: max-content;
     margin-top: 5px;
 }
-.prueba{
+.botonesLista{
     display: flex;
     justify-content: right;
 }
@@ -108,4 +113,7 @@ img{
     height: 25px;
     margin: 0px;
     float: left;
+}
+.ocultar{
+    display: none;
 }
